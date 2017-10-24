@@ -8,15 +8,20 @@ import { HttpModule } from '@angular/http';
 import { AppController } from './components/app/app';
 
 import { UsersService } from './services/users';
+import { BlogsService } from './services/blogs'
 
 import { HomePage } from '../pages/home/home';
 import { UserDetailsPage } from '../pages/user-details/user-details';
+import { UserBlogpostsPage } from '../pages/user-blogposts/user-blogposts';
+import { BlogDetailsPage } from '../pages/blog-details/blog-details';
 
 @NgModule({
   declarations: [
     AppController,
     HomePage,
-    UserDetailsPage
+    UserDetailsPage,
+    UserBlogpostsPage,
+    BlogDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -27,13 +32,16 @@ import { UserDetailsPage } from '../pages/user-details/user-details';
   entryComponents: [
     AppController,
     HomePage,
-    UserDetailsPage
+    UserDetailsPage, 
+    UserBlogpostsPage,
+    BlogDetailsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UsersService
+    UsersService,
+    BlogsService
   ]
 })
 export class AppModule {}

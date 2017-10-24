@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+
+import { BlogsService } from '../../app/services/blogs';
+
+import { UserBlogpostsPage } from '../user-blogposts/user-blogposts';
 
 import { UserModel } from '../../app/models/user';
 
@@ -13,7 +17,24 @@ import { UserModel } from '../../app/models/user';
 export class UserDetailsPage {
 	user: UserModel;
 
-	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private blogsService: BlogsService) {
 		this.user = navParams.get('user') as UserModel;
+	}
+
+	GoToBlogposts(): void {
+		this.blogsService.GetBlogpostsByUser(this.user.handle)
+			.then(blogposts => {
+				this.navCtrl.push(UserBlogpostsPage, {
+					blogposts: blogposts
+				})
+			})
+			.catch(err => {
+				let alert = this.alertCtrl.create({
+		          title: "Failed to open blogposts",
+		          buttons: ['OK']
+		        });
+
+		        alert.present();
+			});
 	}
 }

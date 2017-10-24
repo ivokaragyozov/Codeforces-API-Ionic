@@ -1,0 +1,21 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			User blogs
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card *ngFor="let blog of blogs" text-wrap (click)="GetBlogDetails(blog.id)">
+		<ion-item>
+			<h1>{{blog.title.substr(3, blog.title.length - 7)}}</h1>
+			By {{blog.authorHandle}}, {{blog.creationTime | date:'yyyy-MM-dd'}}
+		</ion-item>
+
+		<ion-item>
+			<ion-icon name="stats" item-left></ion-icon>
+			<ion-badge item-left>{{blog.rating}}</ion-badge>
+		</ion-item>
+	</ion-card>
+</ion-content>

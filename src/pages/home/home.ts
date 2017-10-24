@@ -17,23 +17,23 @@ export class HomePage {
   searchedHandle: string;
 
   SearchUser(): void {
-  	this.usersService.GetUserByHandle(this.searchedHandle)
-  		.then(user => {
-  			this.navCtrl.push(UserDetailsPage, {
-  				user: user
-  			});
+    this.usersService.GetUserByHandle(this.searchedHandle)
+      .then(user => {
+        this.navCtrl.push(UserDetailsPage, {
+          user: user
+        });
 
-				this.searchedHandle = "";
-  		})
-  		.catch(err => {
-  			let alert = this.alertCtrl.create({
-  				title: "User not found",
-  				subTitle: 'User with that handle was not found!',
-  				buttons: ['OK']
-  			});
+        this.searchedHandle = "";
+      })
+      .catch(err => {
+        let alert = this.alertCtrl.create({
+          title: "User not found",
+          subTitle: 'User with that handle was not found!',
+          buttons: ['OK']
+        });
 
-  			alert.present();
-				this.searchedHandle = "";
-  		});
+        alert.present();
+        this.searchedHandle = "";
+      });
   }
 }

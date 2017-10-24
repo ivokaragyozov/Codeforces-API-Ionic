@@ -22,7 +22,6 @@
 			</span>
 		</ion-item>
 		
-		<ion-card-content>
 		<ion-item>
 			<div>
 				{{user.firstName}} {{user.lastName}}
@@ -50,9 +49,21 @@
 			</div>
 		</ion-item>
 		<ion-item>
-			<ion-icon name="star" background-color="yellow" item-left></ion-icon>
+			<ion-icon name="star" class="blue" item-left></ion-icon>
+			<div>
+				Contribution:
+				<span *ngIf="user.contribution > 0" class="green">+{{user.contribution}}</span>
+				<span *ngIf="user.contribution === 0">{{user.contribution}}</span>
+				<span *ngIf="user.contribution < 0" class="gray">{{user.contribution}}</span>
+			</div>
+		</ion-item>
+		<ion-item>
+			<ion-icon name="star" class="green" item-left></ion-icon>
 			<div>Friend of: {{user.friendOfCount}} users</div>
 		</ion-item>
-		</ion-card-content>
+		<ion-item>
+			<ion-icon name="book" item-left></ion-icon>
+			<a (click)="GoToBlogposts()">Blog entries</a>
+		</ion-item>
 	</ion-card>
 </ion-content>
