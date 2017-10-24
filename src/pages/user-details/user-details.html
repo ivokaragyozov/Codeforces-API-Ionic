@@ -1,0 +1,58 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			User Details
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card text-wrap>
+		<ion-item>
+			<ion-avatar item-start>
+				<img src="{{user.avatar}}" />
+			</ion-avatar>
+
+			<span *ngIf="user.rank === 'legendary grandmaster'" class="red">
+				<span class="black">{{user.handle[0]}}</span>{{user.handle.substr(1)}}
+			</span>
+			
+			<span *ngIf="user.rank !== 'legendary grandmaster'">
+				<span class="{{user.color}}">{{user.handle}}</span>
+			</span>
+		</ion-item>
+		
+		<ion-card-content>
+		<ion-item>
+			<div>
+				{{user.firstName}} {{user.lastName}}
+				<span *ngIf="user.firstName || user.lastName">, </span>
+				{{user.country}}
+				<span *ngIf="user.city">, </span>
+				{{user.city}}
+			</div>
+			<div>{{user.organization}}</div>
+		</ion-item>
+		<ion-item *ngIf="user.mail">
+			<ion-icon name="mail" item-left></ion-icon>
+			<h4>{{user.mail}}</h4>
+		</ion-item>
+		<ion-item>
+			<ion-icon name="stats" item-left></ion-icon>
+			<div>
+				Contest rating: 
+				<span class="{{user.color}}">{{user.rating}}</span>
+				(max. 
+				<span class="{{user.maxColor}}">"{{user.maxRank}}"</span>
+				, 
+				<span class="{{user.maxColor}}">{{user.maxRating}}</span>
+				)
+			</div>
+		</ion-item>
+		<ion-item>
+			<ion-icon name="star" background-color="yellow" item-left></ion-icon>
+			<div>Friend of: {{user.friendOfCount}} users</div>
+		</ion-item>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

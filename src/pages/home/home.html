@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    	Search
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-item>
+		<ion-label floating>Handle</ion-label>
+		<ion-input type="text" [(ngModel)]="searchedHandle" ></ion-input>
+	</ion-item>
+	<button ion-button (click)="SearchUser()">Submit</button>
+</ion-content>
