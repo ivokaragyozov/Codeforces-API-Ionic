@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { Http } from '@angular/http'
 
 import { UserModel } from '../models/user'
+import { BlogpostModel } from '../models/blogpost'
 
 import 'rxjs/add/operator/toPromise';
 
@@ -15,30 +16,6 @@ export class UsersService {
 		console.log(err);
 		return Promise.reject(err);
 	} 
-
-	GetColorByRank(rank: string): string {
-		if(rank == "newbie") {
-			return "gray";
-		}
-		else if(rank == "pupil") {
-			return "green";
-		}
-		else if(rank == "specialist") {
-			return "cyan";
-		}
-		else if(rank == "expert") {
-			return "blue";
-		}
-		else if(rank == "candidate master") {
-			return "violet";
-		}
-		else if(rank == "master" || rank == "international master") {
-			return "orange";
-		}
-		else {
-			return "red";
-		}
-	}
 
 	GetUserByHandle(handle: string): Promise<UserModel> {
 		let requestUrl = 'http://codeforces.com/api/user.info?handles=' + handle;
@@ -62,8 +39,8 @@ export class UsersService {
 					maxRating: response.maxRating,
 					friendOfCount: response.friendOfCount,
 					avatar: response.avatar,
-					color: this.GetColorByRank(response.rank),
-					maxColor: this.GetColorByRank(response.maxRank)
+					color: UserModel.GetColorByRank(response.rank),
+					maxColor: UserModel.GetColorByRank(response.maxRank)
 				}
 
 				return user;
