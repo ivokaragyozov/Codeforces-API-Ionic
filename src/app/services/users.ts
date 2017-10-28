@@ -56,7 +56,7 @@ export class UsersService {
 			.then(res => {
 				let response = JSON.parse(res["_body"]).result;
 
-				let ans: [{ newRating: number, time: number }] = [];
+				let ans = [];
 
 				for(let ratingChange of response) {
 					ans.push({

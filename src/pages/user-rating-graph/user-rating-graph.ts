@@ -28,7 +28,7 @@ export class UserRatingGraphPage {
 	GetGraph() {
 		this.usersService.GetRatingHistoryByHandle(this.handle)
 			.then(res => {
-				let ratingHistory: [number] = [], times: [string] = [];
+				let ratingHistory = [], times = [];
 				for(let change of res) {
 					ratingHistory.push(change.newRating);
 					let date = new Date(change.time * 1000);
