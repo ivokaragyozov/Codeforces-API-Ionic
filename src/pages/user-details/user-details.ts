@@ -4,6 +4,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { BlogsService } from '../../app/services/blogs';
 
 import { UserBlogpostsPage } from '../user-blogposts/user-blogposts';
+import { UserRatingGraphPage } from '../user-rating-graph/user-rating-graph';
 
 import { UserModel } from '../../app/models/user';
 
@@ -36,5 +37,11 @@ export class UserDetailsPage {
 
 		        alert.present();
 			});
+	}
+
+	GoToRatingGraph(): void {
+		this.navCtrl.push(UserRatingGraphPage, {
+			handle: this.user.handle
+		})
 	}
 }

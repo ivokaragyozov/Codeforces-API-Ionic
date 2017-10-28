@@ -47,4 +47,26 @@ export class UsersService {
 			})
 			.catch(err => this.HandleError(err));
 	} 
+
+	GetRatingHistoryByHandle(handle: string): Promise<any> {
+		let requestUrl = 'http://codeforces.com/api/user.rating?handle=' + handle;
+
+		return this.http.get(requestUrl)
+			.toPromise()
+			.then(res => {
+				let response = JSON.parse(res["_body"]).result;
+
+				let ans: [{ newRating: number, time: number }] = [];
+
+				for(let ratingChange of response) {
+					ans.push({
+						newRating: Number(ratingChange.newRating),
+						time: Number(ratingChange.ratingUpdateTimeSeconds)
+					});
+				}
+
+				return ans;
+			})
+			.catch(err => this.HandleError(err));
+	}
 }

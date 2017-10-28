@@ -58,6 +58,10 @@
 			</div>
 		</ion-item>
 		<ion-item>
+			<ion-icon name="stats" class="green" item-left></ion-icon>
+			<a (click)="GoToRatingGraph(user.handle)">Rating history</a>
+		</ion-item>
+		<ion-item>
 			<ion-icon name="star" class="green" item-left></ion-icon>
 			<div>Friend of: {{user.friendOfCount}} users</div>
 		</ion-item>

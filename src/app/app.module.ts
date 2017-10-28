@@ -14,6 +14,7 @@ import { HomePage } from '../pages/home/home';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserBlogpostsPage } from '../pages/user-blogposts/user-blogposts';
 import { BlogDetailsPage } from '../pages/blog-details/blog-details';
+import { UserRatingGraphPage } from '../pages/user-rating-graph/user-rating-graph';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BlogDetailsPage } from '../pages/blog-details/blog-details';
     HomePage,
     UserDetailsPage,
     UserBlogpostsPage,
-    BlogDetailsPage
+    BlogDetailsPage,
+    UserRatingGraphPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { BlogDetailsPage } from '../pages/blog-details/blog-details';
     HomePage,
     UserDetailsPage, 
     UserBlogpostsPage,
-    BlogDetailsPage
+    BlogDetailsPage,
+    UserRatingGraphPage
   ],
   providers: [
     StatusBar,
